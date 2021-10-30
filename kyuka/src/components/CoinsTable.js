@@ -6,12 +6,14 @@ import { useHistory } from 'react-router-dom';
 import { CoinList } from '../config/api';
 import { CryptoState } from '../CryptoContext';
 import { numberWithCommas} from '../components/Banner/Carousel'
+import { Pagination } from "@material-ui/lab";
 
 const CoinsTable = () => {
     const [coins, setCoins] = useState([]);
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState("");
     const history = useHistory();
+    const [page, setPage] = useState(1)
 
     const { currency, symbol } = CryptoState();
     
@@ -59,6 +61,11 @@ const CoinsTable = () => {
             },
             fontFamily: "Montserrat",
         },
+        pagination: {
+            "& .MuiPaginationItem-root": {
+                color: "gold",
+            },
+        }
 
     }));
 
@@ -103,7 +110,11 @@ const CoinsTable = () => {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {handleSearch().map((row) => {
+                                        {handleSearch()
+                                            .slice((page - 1) * 10, (page - 1)*10 +10)
+                                            .map((row) => {
+
+
                                             const profit = row.price_change_percentage_24h > 0;
                                             
                                             return (
@@ -174,7 +185,23 @@ const CoinsTable = () => {
                                 </Table>
                         )
                     }
-                    </TableContainer>
+                </TableContainer>
+                
+                <Pagination
+                    style={{
+                        padding: 20,
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                    }}
+                    classes = {{ ul: classes.pagination }}
+                    count={(handleSearch()?.length/10).toFixed(0)}
+                    onChange={( _, value ) => {
+                    setPage(value);
+                    window.scroll(0, 450);
+                        }}
+
+                />
 
             </Container>
         </ThemeProvider>
