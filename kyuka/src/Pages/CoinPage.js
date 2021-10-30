@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import CoinInfo from '../components/CoinInfo';
 import { SingleCoin } from '../config/api';
 import { CryptoState } from '../CryptoContext';
-import ReactHTMLParser from "react-html-parser";
+import ReactHTMLParser from 'react-html-parser';
 
 
 function CoinPage() {
