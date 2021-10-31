@@ -25,6 +25,7 @@ function CoinPage() {
 
     useEffect(() => {
         fetchCoin();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const useStyles = makeStyles((theme) => ({
@@ -159,7 +160,7 @@ function CoinPage() {
                         >
                             {symbol}{" "}
                             {numberWithCommas(
-                                coin ?.market_data.market_cap[currency.toLowerCase()]
+                                coin?.market_data.market_cap[currency.toLowerCase()]
                                     .toString()
                                     .slice(0, -6)
                             )}
