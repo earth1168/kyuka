@@ -6,6 +6,7 @@ import { Line } from 'react-chartjs-2';
 import { HistoricalChart } from '../config/api';
 import { chartDays } from '../config/data';
 import { CryptoState } from '../CryptoContext';
+import SelectButton from './SelectButton';
 
 const CoinInfo = ({ coin }) => {
     const [historicData, setHistoricData] = useState();
@@ -109,7 +110,14 @@ const CoinInfo = ({ coin }) => {
                                     }}
                                 >
                                     {chartDays.map((day) => (
-                                        <button>{day.label}</button>
+                                        <SelectButton
+                                        
+                                            key={day.value}
+                                            onClick={() => setDays(day.value)}
+                                            selected={day.value === days}
+                                        >
+                                            
+                                            {day.label}</SelectButton>
                                     ))}
                                 </div>
                             </>)
