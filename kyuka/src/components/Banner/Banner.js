@@ -1,6 +1,8 @@
 import { Container, makeStyles, Typography } from '@material-ui/core'
 import React from 'react'
-import Carousel from './Carousel';
+import Carousel from './Carousel'
+import {motion} from 'framer-motion'
+
 
 const useStyles = makeStyles(() => ({
     banner: {
@@ -36,8 +38,13 @@ const Banner = () => {
                             fontWeight: "bold",
                             marginBottom: 15,
                             fontFamily: "Montserrat",
-                        }}>
-                            Kyoka
+                        }}
+                        component={motion.div}
+                        initial={{ y: 30, opacity:0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1 }}
+                    >
+                            Kyuka
                     </Typography>
                     <Typography
                         variant="subtitle2"
@@ -45,7 +52,13 @@ const Banner = () => {
                             color: "darkgrey",
                             textTransform: "capitalize",
                             fontFamily: "Montserrat",
-                        }}>
+                        }}
+                        component={motion.div}
+                        initial={{ opacity:0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 2 }}
+                    
+                    >
 
                        Relax and chill with your favorite Crypto Currency
                     </Typography>

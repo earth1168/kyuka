@@ -1,4 +1,4 @@
-import { Container, createTheme, LinearProgress, makeStyles, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@material-ui/core';
+import { Container, createTheme, LinearProgress, makeStyles, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, Fade } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
@@ -7,6 +7,7 @@ import { CoinList } from '../config/api';
 import { CryptoState } from '../CryptoContext';
 import { numberWithCommas} from '../components/Banner/Carousel'
 import { Pagination } from "@material-ui/lab";
+import { motion } from 'framer-motion'
 
 const CoinsTable = () => {
     const [coins, setCoins] = useState([]);
@@ -38,7 +39,7 @@ const CoinsTable = () => {
                 main: "#fff",
             },
             type: "dark",
-        },
+        },  
     });
 
     const handleSearch = () => {
@@ -58,6 +59,8 @@ const CoinsTable = () => {
             cursor: "pointer",
             "&:hover": {
                 backgroundColor: "#131111",
+               
+                
             },
             fontFamily: "Montserrat",
         },
@@ -73,7 +76,9 @@ const CoinsTable = () => {
 
     return (
         <ThemeProvider theme={darkTheme}> 
-            <Container style={{textAlign: "center"}}>
+            <Container
+                style={{ textAlign: "center" }}
+            >
                 <Typography
                     variant="h4"
                     style={{ margin: 18, fintFamily: "Montserrat"}}>

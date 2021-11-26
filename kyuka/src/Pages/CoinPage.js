@@ -9,6 +9,7 @@ import ReactHTMLParser from 'react-html-parser';
 import { numberWithCommas } from '../components/Banner/Carousel';
 
 
+
 function CoinPage() {
     const { id } = useParams();
     const [coin, setCoin] = useState()
